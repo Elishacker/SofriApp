@@ -61,11 +61,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginBottom="136dp"
-        android:backgroundTint="#000"
+        android:backgroundTint="#029"
         android:foregroundTint="#000000"
         android:paddingVertical="12dp"
         android:strokeColor="#000000"
         android:text="@string/sign_as_guest"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
