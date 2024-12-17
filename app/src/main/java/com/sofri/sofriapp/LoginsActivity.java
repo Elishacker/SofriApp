@@ -1,4 +1,4 @@
-package com.sofri.sofriapp.ui.login;
+package com.sofri.sofriapp;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,7 +18,7 @@ import com.sofri.sofriapp.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginsActivity extends AppCompatActivity {
 
     private EditText phoneNumberEditText, otpEditText;
     private Button sendOtpButton, loginButton;
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_logins);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String phoneNumber = phoneNumberEditText.getText().toString().trim();
                 if (TextUtils.isEmpty(phoneNumber)) {
-                    Toast.makeText(LoginActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginsActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
                 } else {
                     sendOtp(phoneNumber);
                 }
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String otpCode = otpEditText.getText().toString().trim();
                 if (TextUtils.isEmpty(otpCode)) {
-                    Toast.makeText(LoginActivity.this, "Enter OTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginsActivity.this, "Enter OTP", Toast.LENGTH_SHORT).show();
                 } else {
                     verifyOtp(otpCode);
                 }
@@ -82,13 +82,13 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Toast.makeText(LoginActivity.this, "Verification Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginsActivity.this, "Verification Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                        LoginActivity.this.verificationId = verificationId;
-                        Toast.makeText(LoginActivity.this, "OTP Sent", Toast.LENGTH_SHORT).show();
+                        LoginsActivity.this.verificationId = verificationId;
+                        Toast.makeText(LoginsActivity.this, "OTP Sent", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -102,10 +102,10 @@ public class LoginActivity extends AppCompatActivity {
     private void signInWithCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginsActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                 // Proceed to next screen or dashboard
             } else {
-                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginsActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
             }
         });
     }

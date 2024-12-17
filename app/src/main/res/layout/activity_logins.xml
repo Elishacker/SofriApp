@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_img"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".LoginsActivity">
 
     <!-- Top Header Design -->
     <View
